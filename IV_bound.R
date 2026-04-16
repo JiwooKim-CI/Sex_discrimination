@@ -58,7 +58,7 @@ make_case_array <- function(case = c("case1", "case2")) {
 }
 
 # Choose the case here
-counts <- make_case_array("case2")
+counts <- make_case_array("case1")
 
 # Standardize to probabilities
 p <- counts / sum(counts)
