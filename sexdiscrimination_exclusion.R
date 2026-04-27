@@ -24,7 +24,7 @@ library(tikzDevice)
 # ------------------------------------------------------------
 # 1. Data construction
 # ------------------------------------------------------------
-
+set.seed(1234)
 make_dataset <- function(job_counts, gender_counts) {
   stopifnot(length(job_counts) == length(gender_counts))
   
@@ -198,7 +198,9 @@ print(summary(boot_result_1))
 print(summary(boot_result_2))
 
 print(boot.ci(boot_result_1))
+result_boot_ci_1 <- boot.ci(boot_result_1)
 print(boot.ci(boot_result_2))
+result_boot_ci_2 <- boot.ci(boot_result_2)
 
 # ------------------------------------------------------------
 # 6. Plot bootstrap distribution
@@ -240,7 +242,7 @@ plot_boot_histogram <- function(boot_result,
   }
   
   if (!is.null(output_tex)) {
-    tikz(output_tex, standAlone = TRUE, width = 5, height = 4)
+    tikz(output_tex, standAlone = TRUE, width = 6, height = 4)
     print(g)
     dev.off()
   }
@@ -248,16 +250,25 @@ plot_boot_histogram <- function(boot_result,
   g
 }
 
-# Example plot for dataset 2
+g1 <- plot_boot_histogram(
+  boot_result = boot_result_1,
+  output_tex = "figure_plot_1.tex",
+  dashed_lines = c(round(result_boot_ci_1$normal[2], 3),
+                   round(result_boot_ci_1$normal[3], 3)),
+  red_line = 1
+  
+)
+
 g2 <- plot_boot_histogram(
   boot_result = boot_result_2,
   output_tex = "figure_plot_2.tex",
-  dashed_lines = c(1.111, 1.181),
+  dashed_lines = c(round(result_boot_ci_2$normal[2], 3),
+                   round(result_boot_ci_2$normal[3], 3)),
   red_line = 1
+  
 )
+
+print(g1)
 
 print(g2)
 
-# Base boot plot if needed
-plot(boot_result_2)
-plot.boot(boot_result_2)
