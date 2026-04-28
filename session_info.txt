@@ -43,7 +43,6 @@
  vctrs          0.7.3   2026-04-11 [1] CRAN (R 4.5.2)
  withr          3.0.2   2024-10-28 [1] CRAN (R 4.5.0)
 
- [1] /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/library
- * ── Packages attached to the search path.
+
 
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
