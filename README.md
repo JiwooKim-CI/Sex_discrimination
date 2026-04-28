@@ -8,15 +8,15 @@ The repository includes two complementary analysis workflows:
 
 1. **Instrumental inequality evidence analysis in R**
    - Computes point estimates of inequality evidence
-   - Constructs \(Q_{dy}\)-based one-sided Wald tests
+   - Constructs one-sided Wald tests
    - Uses stratified bootstrap procedures to quantify uncertainty
 
 2. **Bound-based analysis under IV assumptions**
    - Computes sharp bounds for direct-effect estimands such as
-     - \( \mathrm{CDE}(0) \)
-     - \( \mathrm{CDE}(1) \)
-     - \( \mathrm{NDE}(0) \)
-     - \( \mathrm{NDE}(1) \)
+     - CDE(0)
+     - CDE(1)
+     - NDE(0)
+     - NDE(1)
    - Implements both:
      - an R version using linear programming (`lpSolve`)
      - a Python version using `autobounds`
@@ -32,18 +32,17 @@ The code is designed around two empirical case studies:
   This script:
   - constructs the two datasets (Case 1 and Case 2),
   - computes the instrumental inequality point estimate,
-  - runs Wald tests using \(Q_{dy}\),
+  - runs Wald tests,
   - runs bootstrap resampling.
 
 - `IV_bound.R`  
   R script for computing sharp bounds on direct effects under an IV-based potential outcomes model using linear programming.  
   It:
-  - solves lower and upper bounds for \( \mathrm{CDE}(0), \mathrm{CDE}(1), \mathrm{NDE}(0), \mathrm{NDE}(1) \).
+  - solves lower and upper bounds for different types of direct effects.
 
 - `autobound.py`  
   Python script that uses the `autobounds` package to compute:
-  - direct-effect bounds \( \mathrm{CDE}(0), \mathrm{CDE}(1), \mathrm{NDE}(0), \mathrm{NDE}(1) \)
-    under the exclusion-restriction-violated model.
+  - direct-effect bounds under the exclusion-restriction-violated model.
 
 - `session_info.txt`  
   R session information for reproducibility, including R version and package versions.
